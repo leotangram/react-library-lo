@@ -21,7 +21,7 @@ interface ProductButtonsProps {
 export const ProductImage = ({ img = '' }) => {
   return (
     <img
-      alt="Product image"
+      alt="Product"
       className={styles.productImg}
       src={img ? img : noImage}
     />
@@ -49,16 +49,10 @@ export const ProductButtons: FC<ProductButtonsProps> = ({
   )
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product }) => {
+const ProductCard: FC<ProductCardProps> = ({ children, product }) => {
   const { counter, increaseBy } = useProduct()
 
-  return (
-    <div className={styles.productCard}>
-      <ProductImage img={product.img} />
-      <ProductTitle title={product.title} />
-      <ProductButtons counter={counter} increaseBy={increaseBy} />
-    </div>
-  )
+  return <div className={styles.productCard}>{children}</div>
 }
 
 export default ProductCard
