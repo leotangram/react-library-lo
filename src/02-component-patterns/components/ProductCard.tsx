@@ -1,19 +1,29 @@
+import { FC } from 'react'
 import { useProduct } from '../hooks/useProduct'
 import styles from '../styles/styles.module.css'
 import noImage from '../assets/no-image.jpg'
 
-const ProductCard = () => {
+interface Product {
+  id: string
+  img?: string
+  title: string
+}
+
+interface ProductCardProps {
+  product: Product
+}
+
+const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const { counter, increaseBy } = useProduct()
 
   return (
     <div className={styles.productCard}>
       <img
-        alt="Coffe mug"
+        alt="No image"
         className={styles.productImg}
-        src="./coffee-mug.png"
+        src={product.img ? product.img : noImage}
       />
-      {/* <img alt="No image" className={styles.productImg} src={noImage} /> */}
-      <span className={styles.productDescription}>Coffe Mug</span>
+      <span className={styles.productDescription}>{product.title}</span>
       <div className={styles.buttonsContainer}>
         <button className={styles.buttonMinus} onClick={() => increaseBy(-1)}>
           -
