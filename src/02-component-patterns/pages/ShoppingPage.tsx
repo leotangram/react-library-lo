@@ -17,6 +17,11 @@ const ShoppingPage = () => {
       <hr />
       <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
         <ProductCard product={product}>
+          <ProductCard.Image img={product.img} />
+          <ProductCard.Title title={product.title} />
+          <ProductCard.Buttons counter={counter} increaseBy={increaseBy} />
+        </ProductCard>
+        <ProductCard product={product}>
           <ProductImage img={product.img} />
           <ProductTitle title={product.title} />
           <ProductButtons counter={counter} increaseBy={increaseBy} />

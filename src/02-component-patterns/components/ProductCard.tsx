@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactElement } from 'react'
 import { useProduct } from '../hooks/useProduct'
 import styles from '../styles/styles.module.css'
 import noImage from '../assets/no-image.jpg'
@@ -10,6 +10,7 @@ interface Product {
 }
 
 interface ProductCardProps {
+  children?: ReactElement | ReactElement[]
   product: Product
 }
 
@@ -49,10 +50,14 @@ export const ProductButtons: FC<ProductButtonsProps> = ({
   )
 }
 
-const ProductCard: FC<ProductCardProps> = ({ children, product }) => {
+const ProductCard = ({ children, product }: ProductCardProps) => {
   const { counter, increaseBy } = useProduct()
 
   return <div className={styles.productCard}>{children}</div>
 }
+
+ProductCard.Image = ProductImage
+ProductCard.Title = ProductTitle
+ProductCard.Buttons = ProductButtons
 
 export default ProductCard
