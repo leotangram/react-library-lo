@@ -6,12 +6,22 @@ import { ProductCardProps, ProductContextProps } from '../interfaces/interfaces'
 export const ProductsContext = createContext({} as ProductContextProps)
 const { Provider } = ProductsContext
 
-const ProductCard = ({ children, product }: ProductCardProps) => {
+const ProductCard = ({
+  children,
+  className,
+  product,
+  style
+}: ProductCardProps) => {
   const { counter, increaseBy } = useProduct()
 
   return (
     <Provider value={{ counter, increaseBy, product }}>
-      <div className={styles.productCard}>{children}</div>
+      <div
+        className={`${styles.productCard} ${className ? className : ''}`}
+        style={style}
+      >
+        {children}
+      </div>
     </Provider>
   )
 }
