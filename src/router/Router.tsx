@@ -6,7 +6,6 @@ import {
   Routes
 } from 'react-router-dom'
 import logo from '../logo.svg'
-import ShoppingPage from '../02-component-patterns/pages/ShoppingPage'
 
 const Router = () => {
   return (
@@ -44,7 +43,7 @@ const Router = () => {
         <Routes>
           <Route path="/about" element={<h1>About page</h1>} />
           <Route path="/users" element={<h1>Users page</h1>} />
-          <Route path="/" element={<ShoppingPage />} />
+          <Route path="/" element={<h1>Home page</h1>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
