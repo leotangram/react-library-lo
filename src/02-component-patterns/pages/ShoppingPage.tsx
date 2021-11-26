@@ -1,8 +1,5 @@
-import ProductCard, {
-  ProductButtons,
-  ProductImage,
-  ProductTitle
-} from '../components/ProductCard'
+import { ProductButtons } from '../components/ProductButtons'
+import ProductCard, { ProductImage, ProductTitle } from '../components/'
 
 const product = {
   id: '1',
