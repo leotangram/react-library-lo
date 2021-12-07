@@ -9,20 +9,35 @@ const { Provider } = ProductsContext
 const ProductCard = ({
   children,
   className,
+  initialValues,
   onChange,
   product,
   style,
   value
 }: ProductCardProps) => {
-  const { counter, increaseBy } = useProduct({ onChange, product, value })
+  const { counter, increaseBy, isMaxCountReached, maxCount, reset } =
+    useProduct({
+      initialValues,
+      onChange,
+      product,
+      value
+    })
 
   return (
-    <Provider value={{ counter, increaseBy, product }}>
+    <Provider value={{ counter, increaseBy, maxCount, product }}>
       <div
         className={`${styles.productCard} ${className ? className : ''}`}
         style={style}
       >
-        {children}
+        {children({
+          count: counter,
+          isMaxCountReached,
+          maxCount: initialValues?.maxCount,
+          product,
+
+          increaseBy,
+          reset
+        })}
       </div>
     </Provider>
   )

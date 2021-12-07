@@ -7,12 +7,15 @@ export interface Product {
 }
 
 export interface ProductCardProps {
-  children?: ReactElement | ReactElement[]
+  // children?: () => JSX.Element | ReactElement | ReactElement[]
   className?: string
-  onChange?: (args: onChangeArgs) => void
+  initialValues?: InitialValues
   product: Product
   style?: CSSProperties
   value?: number
+
+  children: (args: ProductCardHandlers) => JSX.Element
+  onChange?: (args: onChangeArgs) => void
 }
 
 export interface ProductTitleProps {
@@ -34,9 +37,11 @@ export interface ProductButtonsProps {
 
 export interface ProductContextProps {
   counter: number
-  increaseBy: (value: number) => void
+  maxCount?: number
   product: Product
   style?: CSSProperties
+
+  increaseBy: (value: number) => void
 }
 
 export interface ProductInCart extends Product {
@@ -45,9 +50,9 @@ export interface ProductInCart extends Product {
 
 export interface ProductCardHOCProps {
   ({ children, className, product }: ProductCardProps): JSX.Element
-  Title: ({ className, title }: ProductTitleProps) => JSX.Element
-  Image: ({ img }: ProductImageProps) => JSX.Element
   Buttons: ({ className }: ProductButtonsProps) => JSX.Element
+  Image: ({ img }: ProductImageProps) => JSX.Element
+  Title: ({ className, title }: ProductTitleProps) => JSX.Element
 }
 
 export interface onChangeArgs {
@@ -56,7 +61,24 @@ export interface onChangeArgs {
 }
 
 export interface useProductArgs {
+  initialValues?: InitialValues
   product: Product
-  onChange?: (args: onChangeArgs) => void
   value?: number
+
+  onChange?: (args: onChangeArgs) => void
+}
+
+export interface InitialValues {
+  count?: number
+  maxCount?: number
+}
+
+export interface ProductCardHandlers {
+  count: number
+  isMaxCountReached: boolean
+  maxCount?: number
+  product: Product
+
+  increaseBy: (value: number) => void
+  reset: () => void
 }
