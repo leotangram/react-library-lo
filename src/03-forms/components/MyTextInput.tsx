@@ -9,7 +9,10 @@ interface MyTextInputProps {
 }
 
 const MyTextInput = ({ ...props }: MyTextInputProps) => {
-  const [field, meta] = useField(props)
+  const [
+    field
+    // meta
+  ] = useField(props)
 
   return (
     <>

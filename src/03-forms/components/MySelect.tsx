@@ -7,7 +7,7 @@ interface MySelectProps {
 }
 
 const MySelect = ({ ...props }: MySelectProps) => {
-  const [field, meta] = useField(props)
+  const [field] = useField(props)
 
   return (
     <>

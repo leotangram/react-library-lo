@@ -56,9 +56,6 @@ const FormikAbstractationPage = () => {
               placeholder="johndoe@gmail.com"
               type="email"
             />
-            {/* <label htmlFor="firstName">First name</label>
-            <Field name="firstName" type="text" />
-            <ErrorMessage component="span" name="firstName" /> */}
             <MySelect label="Job type" name="jobType">
               <option value="">Pick something</option>
               <option value="developer">Developer</option>
@@ -66,21 +63,7 @@ const FormikAbstractationPage = () => {
               <option value="it-senior">IT Senior</option>
               <option value="it-jr">IT Junior</option>
             </MySelect>
-            {/* <label htmlFor="jobType">Job type</label>
-            <Field as="select" name="jobType">
-              <option value="">Pick something</option>
-              <option value="developer">Developer</option>
-              <option value="designer">Designer</option>
-              <option value="it-senior">IT Senior</option>
-              <option value="it-jr">IT Junior</option>
-            </Field>
-            <ErrorMessage component="span" name="jobType" /> */}
             <MyCheckbox label="Terms & conditions" name="terms" />
-            {/* <label>
-              <Field name="terms" type="checkbox" />
-              Terms and conditions
-            </label>
-            <ErrorMessage component="span" name="terms" /> */}
             <button type="submit">Submit</button>
           </Form>
         )}
